@@ -35,3 +35,11 @@ if [ "$1" = "clear_data" ]; then
     rm -f local_data/data.csv
     rm -f local_data/report.html
 fi
+
+if [ "$1" = "inside_generator" ]; then
+    docker run -it -v "$(pwd)/data:/data" generator-image /bin/bash
+fi
+
+if [ "$1" = "inside_reporter" ]; then
+    docker run -it -v "$(pwd)/data:/data" reporter-image /bin/sh
+fi
